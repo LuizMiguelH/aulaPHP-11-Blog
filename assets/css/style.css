@@ -2,3 +2,7 @@ main .container .card{
     width: 100%rem;
     height: auto;
 }
+
+main textarea{
+    resize: none;
+}
