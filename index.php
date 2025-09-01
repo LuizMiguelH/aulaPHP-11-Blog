@@ -33,12 +33,15 @@ unset($conexao);
                         card’s content.</p>
                 </div>
                 <div class="card-footer bg-white d-flex flex-row border-0">
-                    <i class="bi bi-heart fs-2 me-3"></i>
-                    <i class="bi bi-heart-fill fs-2 me-3 d-none"></i>
-                    <div class="d-flex">
+                    <i class="bi bi-heart fs-2 me-3" id="<?= $post["id_post"]?>"></i>
+                    <i class="bi bi-heart-fill fs-2 me-3" style="display: none;"></i>
+                    <div class="d-flex w-100">
                         <label for="txtComment" class="form-label"></label>
-                        <textarea type="text" class="form-control" id="txtComment" name="txtConteudoPost" rows="1" placeholder="Adicionar Comentário"></textarea>
+                        <textarea type="text" class="form-control w-100 align-content-center" id="txtComment" name="txtConteudoPost" rows="1" placeholder="Adicionar Comentário"></textarea>
                     </div>
+                </div>
+                <div class="comentarios d-flex justify-content-center">
+                    <p class="text-primary mt-2">Ver comentários</p>
                 </div>
             </div>
         <?php } ?>

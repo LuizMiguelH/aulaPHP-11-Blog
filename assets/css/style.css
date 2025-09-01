@@ -3,6 +3,11 @@ main .container .card{
     height: auto;
 }
 
-main textarea{
+main .container .card .card-footer textarea{
     resize: none;
+}
+
+main .container .card .comentarios p,
+main .container .card .card-footer i{
+    cursor: pointer;
 }

@@ -1,14 +1,11 @@
-const verSenha = document.getElementById("floatingPassword")
-const olhoFechado = document.getElementsByClassName("bi-eye-slash")
-const olhoAberto = document.getElementsByClassName("bi-eye")
-
-olhoFechado.onclick = function () {
-    olhoFechado.style.display = "none"
-    olhoAberto.style.display = "block"
-}
-
-olhoAberto.onclick = function () {
-    olhoAberto.style.display = "none"
-    olhoFechado.style.display = "block"
-}
-
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("bi-heart")) {
+        e.target.style.display = "none";
+        e.target.nextElementSibling.style.display = "inline-block";
+    }
+    
+    if (e.target.classList.contains("bi-heart-fill")) {
+        e.target.style.display = "none";
+        e.target.previousElementSibling.style.display = "inline-block";
+    }
+});
