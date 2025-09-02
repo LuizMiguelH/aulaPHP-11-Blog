@@ -9,7 +9,17 @@ $select = $conexao->prepare($sqlPost);
 if ($select->execute()) {
     $postagens = $select->fetchAll(PDO::FETCH_ASSOC);
 }
+
+$sqlComment = "SELECT c.*, u.nome FROM comentarios c 
+INNER JOIN usuarios u ON c.id_usuario = u.id_usuario 
+INNER JOIN posts p ON c.id_post = p.id_post 
+ORDER BY c.id_comentario DESC";
+$selecionar= $conexao->prepare($sqlComment);
+if ($selecionar->execute()) {
+    $comentarios = $selecionar->fetchAll(PDO::FETCH_ASSOC);
+}
 unset($conexao);
+
 ?>
 
 <main>
