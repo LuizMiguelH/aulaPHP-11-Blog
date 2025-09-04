@@ -9,17 +9,6 @@ $select = $conexao->prepare($sqlPost);
 if ($select->execute()) {
     $postagens = $select->fetchAll(PDO::FETCH_ASSOC);
 }
-
-$sqlComment = "SELECT c.*, u.nome FROM comentarios c 
-INNER JOIN usuarios u ON c.id_usuario = u.id_usuario 
-INNER JOIN posts p ON c.id_post = p.id_post 
-ORDER BY c.id_comentario DESC";
-$selecionar= $conexao->prepare($sqlComment);
-if ($selecionar->execute()) {
-    $comentarios = $selecionar->fetchAll(PDO::FETCH_ASSOC);
-}
-unset($conexao);
-
 ?>
 
 <main>
@@ -43,15 +32,37 @@ unset($conexao);
                         card’s content.</p>
                 </div>
                 <div class="card-footer bg-white d-flex flex-row border-0">
-                    <i class="bi bi-heart fs-2 me-3" id="<?= $post["id_post"]?>"></i>
+                    <i class="bi bi-heart fs-2 me-3" id="<?= $post["id_post"] ?>"></i>
                     <i class="bi bi-heart-fill fs-2 me-3" style="display: none;"></i>
                     <div class="d-flex w-100">
                         <label for="txtComment" class="form-label"></label>
-                        <textarea type="text" class="form-control w-100 align-content-center" id="txtComment" name="txtConteudoPost" rows="1" placeholder="Adicionar Comentário"></textarea>
+                        <textarea type="text" class="form-control w-100 align-content-center" id="txtComment"
+                            name="txtConteudoPost" rows="1" placeholder="Adicionar Comentário"></textarea>
                     </div>
                 </div>
-                <div class="comentarios d-flex justify-content-center">
-                    <p class="text-primary mt-2">Ver comentários</p>
+                <div class="d-flex justify-content-center">
+                    <p class="verMais text-primary mt-2">Ver comentários</p>
+                </div>
+                <div class="comentarios bg-black">
+                    <?php $sqlComment = "SELECT c.*, u.nome FROM comentarios c 
+                    INNER JOIN usuarios u ON c.id_usuario = u.id_usuario 
+                    INNER JOIN posts p ON c.id_post = p.id_post 
+                    WHERE c.id_post = $post['id_post']
+                    ORDER BY c.id_comentario DESC";
+                    $selecionar = $conexao->prepare($sqlComment);
+                    if ($selecionar->execute()) {
+                        $comentarios = $selecionar->fetchAll(PDO::FETCH_ASSOC);
+                    }
+                    unset($conexao);
+                    foreach ($comentarios as $comment) { ?>
+                        <div class="card p-2 rounded-1">
+                            <div class="name-and-date d-flex justify-content-between w-100">
+                                <p class="h3 d-flex m-0 ms-3 align-items-center"><?= $comment["nome"] ?></p>
+                                <p class="d-flex m-0 ms-3 align-items-center">
+                                    <?= htmlspecialchars(date('H:m d/m/Y', strtotime($comment["data_comentario"]))) ?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         <?php } ?>

@@ -9,3 +9,11 @@ document.addEventListener("click", (e) => {
         e.target.previousElementSibling.style.display = "inline-block";
     }
 });
+
+const
+
+document.addEventListener("click", (u) => {
+    if (u.target.classList.contains("verMais")) {
+        
+    }
+})
