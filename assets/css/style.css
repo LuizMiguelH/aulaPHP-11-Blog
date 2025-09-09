@@ -1,13 +1,13 @@
-main .container .card{
+main .container .card {
     width: 100%;
     height: auto;
 }
 
-main .container .card .card-footer textarea{
+main .container .card .card-footer textarea {
     resize: none;
 }
 
 main .container .card .comentarios p,
-main .container .card .card-footer i{
+main .container .card .card-footer i {
     cursor: pointer;
 }
