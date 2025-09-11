@@ -20,17 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("click", (e) => {
-    // Lógica para os corações
-    if (e.target.classList.contains("bi-heart")) {
-        e.target.style.display = "none";
-        e.target.nextElementSibling.style.display = "inline-block";
-    }
-    
-    if (e.target.classList.contains("bi-heart-fill")) {
-        e.target.style.display = "none";
-        e.target.previousElementSibling.style.display = "inline-block";
-    }
-
     // Lógica para ver mais comentários
     if (e.target.classList.contains("vermais") && !e.target.disabled) {
         const postId = e.target.getAttribute("data-post-id");
@@ -54,3 +43,7 @@ document.addEventListener("click", (e) => {
         }
     }
 });
+
+const addcomment = document.querySelector(".addcomment")
+
+document
