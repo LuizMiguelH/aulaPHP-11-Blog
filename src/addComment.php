@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         } catch (Exception $e) {
             $_SESSION['mensagem'] = "Ocorreu um erro!" . $e;
             $_SESSION['cor'] = 'alert-danger';
-            header("Location: " . ROOT_PATH . "screens/criarPost.php");
+            header("Location: " . ROOT_PATH . "index.php");
             exit;
             
         } finally {
